@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intrusos en cristal líquido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Un solo mundo visual: el morado oscuro del póster, con los colores de los regímenes
+     (naranja = errático, azul = deriva). Columna central, videos grandes primero. */
+  :root {
+    --fondo: #140818;
+    --panel: #22122a;
+    --borde: #3a2546;
+    --texto: #f1ecf4;
+    --suave: #b9adc2;
+    --deriva: #6e9bff;
+    --erratico: #ff8a5c;
+    --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+    --cuerpo: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: var(--cuerpo);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .envoltura { max-width: 1040px; margin: 0 auto; padding: 32px 20px 48px; display: grid; gap: 36px; }
+
+  header { display: grid; gap: 14px; }
+  .grupo { font-family: var(--display); font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+           font-size: 13px; color: var(--erratico); margin: 0; }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 6vw, 58px); line-height: 1.05;
+       margin: 0; text-wrap: balance; }
+  .autores { margin: 0; color: var(--suave); }
+  .autores strong { color: var(--texto); font-weight: 600; }
+  .intro { max-width: 65ch; margin: 0; }
+
+  .leyenda { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0; padding: 0; list-style: none;
+             color: var(--suave); font-size: 15px; }
+  .leyenda li { display: flex; align-items: center; gap: 8px; }
+  .muestra { width: 22px; height: 22px; border-radius: 50%; border: 3px solid #ffd23c; flex: none; }
+  .linea { width: 26px; height: 4px; border-radius: 2px; background: #2f8cff; flex: none; }
+  .barra { width: 26px; height: 6px; background: #fff; border: 1px solid #000; flex: none; }
+
+  section { display: grid; gap: 16px; }
+  .cabeza { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
+  h2 { font-family: var(--display); font-weight: 800; font-size: 28px; margin: 0; text-wrap: balance; }
+  .chip { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: .08em;
+          text-transform: uppercase; padding: 3px 10px; border-radius: 999px; color: #140818; }
+  .chip.deriva { background: var(--deriva); }
+  .chip.erratico { background: var(--erratico); }
+  .condiciones { font-variant-numeric: tabular-nums; color: var(--suave); margin: 0; }
+  section > p.texto { max-width: 65ch; margin: 0; }
+
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  figure { margin: 0; background: var(--panel); border: 1px solid var(--borde); border-radius: 10px;
+           overflow: hidden; display: grid; }
+  figure.deriva { border-top: 4px solid var(--deriva); max-width: 760px; }
+  figure.erratico { border-top: 4px solid var(--erratico); }
+  video { width: 100%; max-width: 100%; height: auto; display: block; background: #000; }
+  figcaption { padding: 10px 14px 12px; font-size: 15px; color: var(--suave); }
+
+  footer { border-top: 1px solid var(--borde); padding-top: 18px; display: grid; gap: 6px;
+           color: var(--suave); font-size: 14px; }
+  footer p { margin: 0; max-width: 75ch; }
+  a { color: var(--deriva); }
+  a:focus-visible, video:focus-visible { outline: 3px solid #ffd23c; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main class="envoltura">
+
+  <header>
+    <p class="grupo">Física No Lineal · LAFER · Universidad de Chile</p>
+    <h1>Los intrusos en el espacio y el tiempo</h1>
+    <p class="autores"><strong>Santiago Ocampo Inzunza</strong> · Marcel G. Clerc Gavilán</p>
+    <p class="intro">
+      Pequeñas partículas (intrusos) suspendidas en una celda de cristal líquido nemático con
+      anclaje homeotrópico, bajo un voltaje alterno V(t) = V<sub>0</sub> cos(ωt). Según la amplitud
+      y la frecuencia del voltaje, los intrusos se quedan quietos, se mueven de forma errática o
+      derivan en una dirección. Estos videos muestran los dos regímenes de movimiento, en tiempo real.
+    </p>
+    <ul class="leyenda" aria-label="Cómo leer los videos">
+      <li><span class="muestra" aria-hidden="true"></span>el intruso que se sigue</li>
+      <li><span class="linea" aria-hidden="true"></span>el camino que ha recorrido</li>
+      <li><span class="barra" aria-hidden="true"></span>barra de escala en µm</li>
+    </ul>
+  </header>
+
+  <section aria-labelledby="t-deriva">
+    <div class="cabeza">
+      <h2 id="t-deriva">Deriva</h2>
+      <span class="chip deriva">régimen de deriva</span>
+      <p class="condiciones">8,5 Vpp · 10 Hz</p>
+    </div>
+    <p class="texto">
+      Sobre el voltaje de Fréedericksz las moléculas se inclinan y vuelven a enderezarse en cada
+      ciclo del voltaje. El flujo de retorno (backflow) que genera ese movimiento empuja al intruso,
+      que avanza de forma persistente en una dirección.
+    </p>
+    <figure class="deriva">
+      <video controls playsinline muted preload="metadata" poster="videos/deriva_8.5Vpp_10Hz.jpg"
+             aria-label="Intruso a 8,5 Vpp y 10 Hz derivando">
+        <source src="videos/deriva_8.5Vpp_10Hz.mp4" type="video/mp4">
+      </video>
+      <figcaption>8,5 Vpp, 10 Hz · 37,6 s en tiempo real</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="t-erratico">
+    <div class="cabeza">
+      <h2 id="t-erratico">Movimiento errático</h2>
+      <span class="chip erratico">régimen errático</span>
+      <p class="condiciones">5,4 Vpp · 1 Hz</p>
+    </div>
+    <p class="texto">
+      Cerca del umbral y a baja frecuencia, el intruso se mueve sin una dirección definida: va y
+      vuelve sin avanzar de forma neta. Este régimen no lo predice el modelo de backflow. A este
+      voltaje, bajo el umbral de Fréedericksz medido (≈ 5,7 Vpp), la imagen entre polarizadores
+      cruzados se ve casi oscura.
+    </p>
+    <div class="rejilla">
+      <figure class="erratico">
+        <video controls playsinline muted preload="metadata" poster="videos/erratico_5.4Vpp_1Hz_a.jpg"
+               aria-label="Primer intruso a 5,4 Vpp y 1 Hz">
+          <source src="videos/erratico_5.4Vpp_1Hz_a.mp4" type="video/mp4">
+        </video>
+        <figcaption>Intruso 1 · 5,4 Vpp, 1 Hz · 37,6 s</figcaption>
+      </figure>
+      <figure class="erratico">
+        <video controls playsinline muted preload="metadata" poster="videos/erratico_5.4Vpp_1Hz_b.jpg"
+               aria-label="Segundo intruso a 5,4 Vpp y 1 Hz">
+          <source src="videos/erratico_5.4Vpp_1Hz_b.mp4" type="video/mp4">
+        </video>
+        <figcaption>Intruso 2 · 5,4 Vpp, 1 Hz · 37,6 s</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer>
+    <p>Videos a velocidad real (26,6 cuadros por segundo). Escala: 1,047 µm por píxel.
+       El seguimiento del intruso y la barra de escala se agregaron al video original.</p>
+    <p>Contacto: Santiago.Ocampo.Inzunza@gmail.com</p>
+  </footer>
+
+</main>
+</body>
+</html>
